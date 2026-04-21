@@ -1,0 +1,63 @@
+{
+  "$schema": "https://como-ui.dev/schema.json",
+  "name": "como-ui",
+  "homepage": "https://como-ui.dev",
+  "items": [
+    {
+      "name": "utils",
+      "type": "registry:lib",
+      "description": "Tailwind class merging helper (cn)",
+      "dependencies": ["clsx", "tailwind-merge"],
+      "files": [
+        { "path": "registry/default/lib/utils.ts", "type": "registry:lib" }
+      ]
+    },
+    {
+      "name": "use-snap-scroll",
+      "type": "registry:hook",
+      "description": "Headless scroll-snap logic for vertical pickers",
+      "files": [
+        {
+          "path": "registry/default/hooks/use-snap-scroll.ts",
+          "type": "registry:hook"
+        }
+      ]
+    },
+    {
+      "name": "snap-picker",
+      "type": "registry:ui",
+      "description": "Generic, accessible vertical snap scroll picker",
+      "registryDependencies": ["utils", "use-snap-scroll"],
+      "files": [
+        {
+          "path": "registry/default/ui/snap-picker.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "number-picker",
+      "type": "registry:ui",
+      "description": "Numeric snap picker with min/max/step and padding",
+      "registryDependencies": ["snap-picker"],
+      "files": [
+        {
+          "path": "registry/default/ui/number-picker.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "time-picker",
+      "type": "registry:ui",
+      "description": "Timezone-aware 12h/24h time picker with optional seconds",
+      "registryDependencies": ["number-picker", "snap-picker"],
+      "files": [
+        {
+          "path": "registry/default/ui/time-picker.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    }
+  ]
+}

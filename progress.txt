@@ -1,0 +1,46 @@
+como-ui — progress log
+======================
+
+## Completed
+- [x] Monorepo scaffolding (pnpm workspace + turborepo)
+  - package.json, pnpm-workspace.yaml, turbo.json, tsconfig.base.json
+  - .gitignore, .npmrc, .prettierrc, README.md, LICENSE
+- [x] @como-ui/registry package (schema + types, shadcn-compatible)
+- [x] @como-ui/cli package
+  - commands: init, add, list, diff
+  - utils: config.ts, registry-client.ts, pkg-manager.ts, fs-utils.ts
+- [x] Registry source components (what ships to users):
+  - registry/default/lib/utils.ts (cn helper)
+  - registry/default/hooks/use-snap-scroll.ts (headless logic)
+  - registry/default/ui/snap-picker.tsx (generic picker)
+  - registry/default/ui/number-picker.tsx (numeric wrapper)
+  - registry/default/ui/time-picker.tsx (12h/24h/tz/seconds)
+- [x] registry.json (top-level manifest)
+- [x] scripts/build-registry.ts (inlines files → static JSON for CLI)
+
+## Next up (pending user action)
+- [ ] Run `pnpm install` at repo root to resolve all lint/type errors
+- [ ] Run `pnpm --filter @como-ui/registry build` to verify schema package
+- [ ] Run `pnpm --filter @como-ui/cli build` to verify CLI compiles
+- [ ] Run `pnpm registry:build` to produce apps/www/public/r/*.json
+- [ ] Scaffold apps/www (Next.js + MDX docs site) — deferred
+- [ ] Smoke test: point CLI at a local file:// registry and run `add snap-picker` in a throwaway Next.js app
+- [ ] Write vitest unit tests (use-snap-scroll, config.ts, registry-client)
+- [ ] Setup changesets + GH Actions for publishing
+- [ ] Publish @como-ui/registry and @como-ui/cli to npm
+
+## Architecture summary
+- Shadcn-style: users run `npx @como-ui/cli add snap-picker`, which pulls
+  static JSON from the registry (docs site) and writes TSX files into
+  their project under `components/ui/`, `hooks/`, `lib/`.
+- Zero runtime dependency on @como-ui from the user's app; the only npm
+  deps they get are standard (clsx, tailwind-merge).
+- components.json is shadcn-compatible so users can freely mix ecosystems.
+
+## Known TODOs inside the code
+- registry-client.ts: add caching / ETag support
+- snap-picker.tsx: add wheel-event support for desktop mouse
+- use-snap-scroll.ts: velocity-based direction inference (currently round())
+- time-picker.tsx: timezone display (currently shifts hour only, not minute
+  — works for whole-hour zones; fractional zones like Asia/Kolkata need
+  minute-level shift support)

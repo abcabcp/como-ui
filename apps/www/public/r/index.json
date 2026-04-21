@@ -1,0 +1,37 @@
+{
+  "$schema": "https://como-ui.dev/schema.json",
+  "name": "como-ui",
+  "homepage": "https://como-ui.dev",
+  "items": [
+    {
+      "name": "utils",
+      "type": "registry:lib",
+      "description": "Tailwind class merging helper (cn)",
+      "files": []
+    },
+    {
+      "name": "use-snap-scroll",
+      "type": "registry:hook",
+      "description": "Headless scroll-snap logic for vertical pickers",
+      "files": []
+    },
+    {
+      "name": "snap-picker",
+      "type": "registry:ui",
+      "description": "Generic, accessible vertical snap scroll picker",
+      "files": []
+    },
+    {
+      "name": "number-picker",
+      "type": "registry:ui",
+      "description": "Numeric snap picker with min/max/step and padding",
+      "files": []
+    },
+    {
+      "name": "time-picker",
+      "type": "registry:ui",
+      "description": "Timezone-aware 12h/24h time picker with optional seconds",
+      "files": []
+    }
+  ]
+}

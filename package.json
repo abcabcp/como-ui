@@ -1,0 +1,37 @@
+{
+  "name": "como-ui",
+  "private": true,
+  "version": "0.0.0",
+  "description": "como-ui — shadcn-style React component library featuring snap scroll pickers and more",
+  "type": "module",
+  "packageManager": "pnpm@10.18.3",
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "build": "turbo run build",
+    "dev": "turbo run dev",
+    "lint": "turbo run lint",
+    "typecheck": "turbo run typecheck",
+    "test": "turbo run test",
+    "registry:build": "tsx scripts/build-registry.ts",
+    "changeset": "changeset",
+    "version": "changeset version",
+    "release": "turbo run build --filter=@como-ui/* && changeset publish"
+  },
+  "devDependencies": {
+    "@changesets/cli": "^2.27.9",
+    "@como-ui/registry": "workspace:*",
+    "@types/node": "^22.9.0",
+    "@types/react": "^19.0.0",
+    "@types/react-dom": "^19.0.0",
+    "clsx": "^2.1.1",
+    "prettier": "^3.3.3",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "tailwind-merge": "^2.5.4",
+    "tsx": "^4.19.2",
+    "turbo": "^2.3.0",
+    "typescript": "^5.6.3"
+  }
+}

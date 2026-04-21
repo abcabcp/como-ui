@@ -1,0 +1,15 @@
+{
+  "name": "number-picker",
+  "type": "registry:ui",
+  "description": "Numeric snap picker with min/max/step and padding",
+  "registryDependencies": [
+    "snap-picker"
+  ],
+  "files": [
+    {
+      "path": "registry/default/ui/number-picker.tsx",
+      "type": "registry:ui",
+      "content": "'use client';\n\nimport * as React from 'react';\nimport { SnapPicker, type SnapPickerClassNames } from '@/components/ui/snap-picker';\n\nexport interface NumberPickerProps {\n  min: number;\n  max: number;\n  step?: number;\n  value: number;\n  onChange: (value: number) => void;\n  /** Left-pad the displayed number with zeroes to this many digits. */\n  pad?: number;\n  itemHeight?: number;\n  visibleCount?: number;\n  loop?: boolean;\n  label?: string;\n  className?: string;\n  classNames?: SnapPickerClassNames;\n  disabled?: boolean;\n  /** Override the default string formatting (e.g. for suffixes). */\n  format?: (n: number) => string;\n}\n\nconst range = (min: number, max: number, step: number): number[] => {\n  const out: number[] = [];\n  for (let n = min; n <= max; n += step) out.push(n);\n  return out;\n};\n\nexport const NumberPicker = ({\n  min,\n  max,\n  step = 1,\n  value,\n  onChange,\n  pad,\n  itemHeight = 60,\n  visibleCount = 5,\n  loop = false,\n  label,\n  className,\n  classNames,\n  disabled,\n  format,\n}: NumberPickerProps): React.ReactElement => {\n  const items = React.useMemo(() => range(min, max, step), [min, max, step]);\n  const formatter = React.useCallback(\n    (n: number): string => (format ? format(n) : pad ? String(n).padStart(pad, '0') : String(n)),\n    [format, pad],\n  );\n\n  return (\n    <SnapPicker<number>\n      items={items}\n      value={value}\n      onChange={(v) => onChange(v)}\n      itemHeight={itemHeight}\n      visibleCount={visibleCount}\n      loop={loop}\n      label={label}\n      disabled={disabled}\n      className={className}\n      classNames={classNames}\n      renderItem={({ item }) => formatter(item)}\n    />\n  );\n};\n"
+    }
+  ]
+}

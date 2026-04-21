@@ -1,0 +1,51 @@
+{
+  "name": "@como-ui/cli",
+  "version": "0.0.1",
+  "description": "CLI for installing como-ui components into your project",
+  "license": "MIT",
+  "type": "module",
+  "bin": {
+    "como-ui": "./dist/index.js"
+  },
+  "files": [
+    "dist",
+    "README.md"
+  ],
+  "keywords": [
+    "react",
+    "ui",
+    "components",
+    "shadcn",
+    "tailwind",
+    "picker",
+    "scroll-picker",
+    "como-ui"
+  ],
+  "scripts": {
+    "build": "tsup",
+    "dev": "tsup --watch",
+    "typecheck": "tsc --noEmit",
+    "lint": "echo 'no lint configured yet'",
+    "test": "vitest run",
+    "clean": "rm -rf dist"
+  },
+  "dependencies": {
+    "@clack/prompts": "^0.8.2",
+    "cac": "^6.7.14",
+    "execa": "^9.5.1",
+    "kleur": "^4.1.5",
+    "ora": "^8.1.1",
+    "tinyglobby": "^0.2.10",
+    "zod": "^3.23.8"
+  },
+  "devDependencies": {
+    "@como-ui/registry": "workspace:*",
+    "@types/node": "^22.9.0",
+    "tsup": "^8.3.5",
+    "typescript": "^5.6.3",
+    "vitest": "^2.1.5"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}
