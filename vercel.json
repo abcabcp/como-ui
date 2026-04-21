@@ -1,8 +1,0 @@
-{
-  "$schema": "https://openapi.vercel.sh/vercel.json",
-  "buildCommand": "pnpm registry:build && pnpm --filter @como-ui/www build",
-  "installCommand": "pnpm install --frozen-lockfile=false",
-  "outputDirectory": "apps/www/.next",
-  "framework": "nextjs",
-  "ignoreCommand": "git diff --quiet HEAD^ HEAD -- . ':(exclude)packages/cli' || exit 0"
-}

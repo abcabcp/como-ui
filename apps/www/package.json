@@ -5,6 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "next dev --turbopack -p 3333",
+    "prebuild": "pnpm -w registry:build",
     "build": "next build",
     "start": "next start -p 3333",
     "lint": "next lint",
